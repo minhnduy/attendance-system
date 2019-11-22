@@ -1,0 +1,69 @@
+<div class="container-fluid" style="padding: 0 !important">
+  <div class="header">
+    <h2>Register Student Face System</h2>
+  </div>
+
+  <div class="content container-fluid">
+    <div class="d-flex justify-content-center py-3 row">
+      <div class="col-md-4 d-flex flex-column">
+        <div class="mx-5">
+          <video #videoInput id="videoInput" width="320" height="240"></video>
+        </div>
+        <div style="display: none">
+          <canvas #canvasInput id="canvasInput"></canvas>
+        </div>
+        <div style="margin: auto">
+          <canvas #canvasOutput id="canvasOutput"></canvas>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="mx-5 row">
+          <div class="col-md-6">
+            <div>
+              <canvas #canvasOutput1 id="canvasOutput1"></canvas>
+            </div>
+            <div>
+              <canvas #canvasOutput2 id="canvasOutput2"></canvas>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div>
+              <canvas #canvasOutput3 id="canvasOutput3"></canvas>
+            </div>
+
+            <div>
+              <canvas #canvasOutput4 id="canvasOutput4"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="d-flex justify-content-center" style="padding-bottom: 10px;">
+      <button class="btn btn-success" *ngIf="!isOpenedCamera" (click)="onStart()"
+        [disabled]="!classifiersLoaded$ | async">Start</button>
+    </div>
+    <div class="d-flex justify-content-center" style="padding-bottom: 10px;">
+      <button class="btn btn-info" *ngIf="isOpenedCamera && outputImage.length !== 4" (click)="onTake()"
+        [disabled]="!isFaceInCam || outputImage.length == 4">Take</button>
+    </div>
+    <div *ngIf="outputImage.length == 4" class="d-flex justify-content-center" style="padding-bottom: 10px;">
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label for="id">ID number: </label>
+          <input [(ngModel)]="studentInfo.id" type="text" class="form-control" id="id" placeholder="Input student's id" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="name">Name</label>
+          <input [(ngModel)]="studentInfo.name" type="text" class="form-control" id="name"
+            placeholder="Input student's name" [ngModelOptions]="{standalone: true}">
+        </div>
+        <button class="btn btn-info" (click)="onSave()" [disabled]="(!studentInfo.id || !studentInfo.name)">Save</button>
+      </form>
+    </div>
+
+  </div>
+
+
+</div>

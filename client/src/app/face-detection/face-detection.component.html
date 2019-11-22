@@ -1,0 +1,62 @@
+<div class="container-fluid" style="padding: 0 !important">
+  <div class="header">
+    <h2>Student Checking System</h2>
+  </div>
+
+  <div class="content">
+    <div class="d-flex justify-content-center py-3 row">
+      <div class="col-md-6 d-flex">
+        <div class="col-md-6">
+          <video #videoInput id="videoInput" width="320" height="240"></video>
+        </div>
+        <div style="display: none">
+          <canvas #canvasInput id="canvasInput"></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas #canvasOutput id="canvasOutput"></canvas>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex">
+        <div class="col-md-6">
+          <canvas #canvasOutput id="canvasFace"></canvas>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-striped text-center" style="background: white">
+            <thead>
+              <tr>
+                <th>ID number</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of listStudent">
+                <td>{{student.split('-')[0]}}</td>
+                <td>{{student.split('-')[1]}}</td>
+              </tr>
+              <tr>
+                <td>15520001</td>
+                <td>Test 1</td>
+              </tr>
+              <tr>
+                <td>15520002</td>
+                <td>Test 2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div style="background: white" class="text-center">
+      <h1>Current face is: {{nameOfFace.name ? nameOfFace.name : "Please wait..."}}</h1>
+    </div>
+    <div class="d-flex justify-content-center" style="padding-bottom: 10px;">
+      <button class="btn btn-success" *ngIf="!isOpenedCamera" (click)="onStart()"
+        [disabled]="!classifiersLoaded$ | async">Start</button>
+      <button class="btn btn-danger" *ngIf="isOpenedCamera" (click)="onCloseCamera()">Stop</button>
+    </div>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,32 @@
+.header {
+  background: #9053c7;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+h2 {
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.content {
+  background: #9053c7;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+button {
+  width: 300px;
+}
+.list-student {
+  border: 2px solid white;
+  color: white;
+}
+h3 {
+  background: white;
+  color: rebeccapurple;
+  margin: 0;
+}
+canvas{
+  width: 320px;
+  height: 240px;
+}
+
